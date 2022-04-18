@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TS.Repositories.Interfaces;
+using TS.Repositories.Repositories;
+using TS.Services;
 
 namespace Timesheets
 {
@@ -31,6 +34,10 @@ namespace Timesheets
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Timesheets", Version = "v1"});
             });
+            
+            // Зарегистрировали интерфейсы в DI контейнере
+            services.AddScoped(typeof(IPerson<>), typeof(PersonRepository<>)); 
+            services.AddTransient<IPersonServices, PersonServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,11 +51,8 @@ namespace Timesheets
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

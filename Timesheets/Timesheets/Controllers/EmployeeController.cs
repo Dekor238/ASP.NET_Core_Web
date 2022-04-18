@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Timesheets.Core;
+using TS.Data.Model;
 
 namespace Timesheets.Controllers
 {
     [ApiController]
     [Route("api/employees")]
     public class EmployeeController : Controller
-    {
+    { 
         // API 
         // HttpPost - создаем сотрудника
         // HttpGet - получаем список всех сотрудников
@@ -36,7 +36,7 @@ namespace Timesheets.Controllers
         }
         
         [HttpPut("update/{id}")]
-        public async Task<ActionResult> Create()
+        public async Task<ActionResult> Update()
         {
             return Ok();
         }
