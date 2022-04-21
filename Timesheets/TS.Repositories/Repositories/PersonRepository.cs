@@ -19,24 +19,13 @@ namespace TS.Repositories.Repositories
         //     return container;
         // }
 
-        public IEnumerator GetAll()
+        public IList<Person> GetAll()
         {
-            IEnumerator result2 = null;
             using (var db = new UserDbContext())
             {
-                var command = db.Database.GetDbConnection().CreateCommand();
-                command.CommandText = "select * from Persons";
-                db.Database.OpenConnection();
-                using (var result = command.ExecuteReader())
-                {
-                    while (result.Read())
-                    {
-                       result2 =  result.GetEnumerator();
-                    }
-                }
-                
+                var result = db.Persons.ToList();
+                return result;
             }
-            return result2;
         }
 
         public Person? Get(int id)

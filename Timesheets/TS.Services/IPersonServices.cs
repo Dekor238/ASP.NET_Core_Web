@@ -6,7 +6,7 @@ namespace TS.Services
 {
     public interface IPersonServices
     {
-        public IEnumerator GetAll();
+        public IList<Person> GetAll();
         public Person Get(int id);
         public Person Search(string term);
         public IEnumerable<Person> GetPag(int skip, int take);

@@ -15,7 +15,7 @@ namespace TS.Services
             _person = person;
         }
 
-        public IEnumerator GetAll()
+        public IList<Person> GetAll()
         {
             return _person.GetAll();
         }

@@ -6,7 +6,7 @@ namespace TS.Repositories.Interfaces
 {
     public interface IPerson<T> where T : class
     {
-        public IEnumerator GetAll();
+        public IList<Person> GetAll();
         public Person? Get(int id);
         public Person? Search(string term);
         public IEnumerable<Person> GetPag(int skip, int take);
